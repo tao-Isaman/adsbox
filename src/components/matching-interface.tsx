@@ -123,7 +123,7 @@ export function MatchingInterface({
                     key={order.id}
                     className={`flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition ${
                       isSelected
-                        ? "border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-950"
+                        ? "border-orange-500 bg-orange-50"
                         : isDisabled
                           ? "cursor-not-allowed border-zinc-100 opacity-50 dark:border-zinc-800"
                           : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
@@ -175,7 +175,7 @@ export function MatchingInterface({
                 <button
                   onClick={handleCreateGroup}
                   disabled={isPending || !groupName.trim()}
-                  className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900"
+                  className="rounded-md bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-600 disabled:opacity-50"
                 >
                   {isPending ? "กำลังสร้าง..." : "สร้างกลุ่ม"}
                 </button>

@@ -60,8 +60,8 @@ export default async function AdminUsersPage() {
                     <span
                       className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
                         profile.role === "admin"
-                          ? "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400"
-                          : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-400"
+                          ? "bg-orange-100 text-orange-800"
+                          : "bg-zinc-100 text-zinc-800"
                       }`}
                     >
                       {profile.role === "admin" ? "แอดมิน" : "ลูกค้า"}

@@ -21,13 +21,13 @@ export default async function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950">
+    <div className="min-h-screen bg-white">
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/80 backdrop-blur-lg dark:border-zinc-800/80 dark:bg-zinc-950/80">
+      <nav className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/80 backdrop-blur-lg">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-900 dark:bg-zinc-100">
-              <span className="text-sm font-bold text-white dark:text-zinc-900">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500">
+              <span className="text-sm font-bold text-white">
                 A
               </span>
             </div>
@@ -36,19 +36,19 @@ export default async function LandingPage() {
           <div className="flex items-center gap-3">
             <a
               href="#packages"
-              className="hidden rounded-lg px-4 py-2 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 sm:block dark:text-zinc-400 dark:hover:text-zinc-100"
+              className="hidden rounded-lg px-4 py-2 text-sm font-medium text-zinc-600 transition hover:text-orange-500 sm:block"
             >
               แพ็กเกจ
             </a>
             <a
               href="#how-it-works"
-              className="hidden rounded-lg px-4 py-2 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 sm:block dark:text-zinc-400 dark:hover:text-zinc-100"
+              className="hidden rounded-lg px-4 py-2 text-sm font-medium text-zinc-600 transition hover:text-orange-500 sm:block"
             >
               วิธีการทำงาน
             </a>
             <Link
               href="/login"
-              className="rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-orange-600"
             >
               เข้าสู่ระบบ
             </Link>
@@ -60,37 +60,37 @@ export default async function LandingPage() {
       <section className="relative overflow-hidden">
         {/* Background decoration */}
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-blue-100/50 blur-3xl dark:bg-blue-900/10" />
-          <div className="absolute -bottom-40 left-0 h-[500px] w-[500px] rounded-full bg-purple-100/50 blur-3xl dark:bg-purple-900/10" />
+          <div className="absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-orange-100/50 blur-3xl" />
+          <div className="absolute -bottom-40 left-0 h-[500px] w-[500px] rounded-full bg-orange-50/80 blur-3xl" />
         </div>
 
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-24 sm:pt-32 lg:pt-40">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-1.5 text-sm text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
-              <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-sm text-orange-600">
+              <span className="inline-block h-2 w-2 rounded-full bg-orange-500" />
               เปิดรับลูกค้าใหม่แล้ววันนี้
             </div>
             <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
               โฆษณาแบรนด์ของคุณ
               <br />
-              <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400">
+              <span className="bg-linear-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 บนกล่องพัสดุทั่วประเทศ
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600">
               AdsBox เปลี่ยนกล่องพัสดุธรรมดาให้กลายเป็นสื่อโฆษณาที่เข้าถึงลูกค้าได้โดยตรง
               โลโก้ของคุณจะถูกพิมพ์บนกล่องนับหมื่นใบ ส่งตรงถึงมือผู้บริโภค
             </p>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="/login"
-                className="w-full rounded-xl bg-zinc-900 px-8 py-3.5 text-base font-medium text-white shadow-lg shadow-zinc-900/20 transition hover:bg-zinc-800 sm:w-auto dark:bg-zinc-100 dark:text-zinc-900 dark:shadow-zinc-100/10 dark:hover:bg-zinc-200"
+                className="w-full rounded-xl bg-orange-500 px-8 py-3.5 text-base font-medium text-white shadow-lg shadow-orange-500/20 transition hover:bg-orange-600 sm:w-auto"
               >
                 เริ่มต้นใช้งานฟรี
               </Link>
               <a
                 href="#packages"
-                className="w-full rounded-xl border border-zinc-300 px-8 py-3.5 text-base font-medium transition hover:bg-zinc-50 sm:w-auto dark:border-zinc-700 dark:hover:bg-zinc-900"
+                className="w-full rounded-xl border border-zinc-300 px-8 py-3.5 text-base font-medium transition hover:bg-zinc-50 sm:w-auto"
               >
                 ดูแพ็กเกจทั้งหมด
               </a>
@@ -98,7 +98,7 @@ export default async function LandingPage() {
           </div>
 
           {/* Stats */}
-          <div className="mx-auto mt-20 grid max-w-2xl grid-cols-3 gap-8 border-t border-zinc-200 pt-10 dark:border-zinc-800">
+          <div className="mx-auto mt-20 grid max-w-2xl grid-cols-3 gap-8 border-t border-zinc-200 pt-10">
             <StatItem value="10,000+" label="กล่องขั้นต่ำ" />
             <StatItem value="4 แบรนด์" label="ต่อ 1 กล่อง" />
             <StatItem value="฿1.40" label="ต่อกล่อง เริ่มต้น" />
@@ -109,17 +109,17 @@ export default async function LandingPage() {
       {/* How it works */}
       <section
         id="how-it-works"
-        className="border-t border-zinc-200 bg-zinc-50 py-24 dark:border-zinc-800 dark:bg-zinc-900/50"
+        className="border-t border-zinc-200 bg-zinc-50 py-24"
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <p className="text-sm font-semibold uppercase tracking-wider text-orange-500">
               ขั้นตอนง่ายๆ
             </p>
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
               วิธีการทำงาน
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-zinc-500 dark:text-zinc-400">
+            <p className="mx-auto mt-4 max-w-xl text-zinc-500">
               เพียง 3 ขั้นตอน โลโก้ของคุณก็จะปรากฏบนกล่องพัสดุ
             </p>
           </div>
@@ -192,13 +192,13 @@ export default async function LandingPage() {
       <section id="packages" className="py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <p className="text-sm font-semibold uppercase tracking-wider text-orange-500">
               ราคา
             </p>
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
               แพ็กเกจโฆษณา
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-zinc-500 dark:text-zinc-400">
+            <p className="mx-auto mt-4 max-w-xl text-zinc-500">
               เลือกแพ็กเกจที่เหมาะกับธุรกิจของคุณ ยิ่งสั่งมากยิ่งคุ้ม
             </p>
           </div>
@@ -224,13 +224,13 @@ export default async function LandingPage() {
               perBox="1.20"
               popular={false}
             />
-            <div className="flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <div className="flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-6">
               <div>
-                <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <p className="text-sm font-medium text-zinc-500">
                   Enterprise
                 </p>
                 <p className="mt-4 text-3xl font-bold">50,000+</p>
-                <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+                <p className="mt-1 text-sm text-zinc-500">
                   กล่อง
                 </p>
                 <div className="mt-6 space-y-3">
@@ -242,7 +242,7 @@ export default async function LandingPage() {
               </div>
               <a
                 href="mailto:contact@adsbox.com"
-                className="mt-8 block w-full rounded-xl border border-zinc-300 py-3 text-center text-sm font-medium transition hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
+                className="mt-8 block w-full rounded-xl border border-zinc-300 py-3 text-center text-sm font-medium transition hover:bg-zinc-50"
               >
                 ติดต่อฝ่ายขาย
               </a>
@@ -252,10 +252,10 @@ export default async function LandingPage() {
       </section>
 
       {/* Why AdsBox */}
-      <section className="border-t border-zinc-200 bg-zinc-50 py-24 dark:border-zinc-800 dark:bg-zinc-900/50">
+      <section className="border-t border-zinc-200 bg-zinc-50 py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <p className="text-sm font-semibold uppercase tracking-wider text-orange-500">
               ทำไมต้อง AdsBox
             </p>
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
@@ -389,16 +389,16 @@ export default async function LandingPage() {
       {/* CTA Section */}
       <section className="py-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="rounded-3xl bg-zinc-900 px-8 py-16 text-center dark:bg-zinc-100 sm:px-16">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl dark:text-zinc-900">
+          <div className="rounded-3xl bg-orange-500 px-8 py-16 text-center sm:px-16">
+            <h2 className="text-3xl font-bold text-white sm:text-4xl">
               พร้อมเริ่มโฆษณาแล้วหรือยัง?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-zinc-300 dark:text-zinc-600">
+            <p className="mx-auto mt-4 max-w-xl text-lg text-orange-100">
               สมัครฟรีวันนี้ เลือกแพ็กเกจ แล้วให้เราดูแลการพิมพ์โลโก้ของคุณลงบนกล่อง
             </p>
             <Link
               href="/login"
-              className="mt-8 inline-block rounded-xl bg-white px-8 py-3.5 text-base font-medium text-zinc-900 shadow-lg transition hover:bg-zinc-100 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+              className="mt-8 inline-block rounded-xl bg-white px-8 py-3.5 text-base font-medium text-orange-600 shadow-lg transition hover:bg-orange-50"
             >
               สมัครสมาชิกฟรี
             </Link>
@@ -407,39 +407,39 @@ export default async function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-200 dark:border-zinc-800">
+      <footer className="border-t border-zinc-200">
         <div className="mx-auto max-w-6xl px-6 py-12">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-zinc-900 dark:bg-zinc-100">
-                <span className="text-xs font-bold text-white dark:text-zinc-900">
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-orange-500">
+                <span className="text-xs font-bold text-white">
                   A
                 </span>
               </div>
               <span className="font-bold">AdsBox</span>
             </div>
-            <div className="flex gap-6 text-sm text-zinc-500 dark:text-zinc-400">
+            <div className="flex gap-6 text-sm text-zinc-500">
               <a
                 href="mailto:contact@adsbox.com"
-                className="transition hover:text-zinc-900 dark:hover:text-zinc-100"
+                className="transition hover:text-orange-500"
               >
                 ติดต่อเรา
               </a>
               <a
                 href="#packages"
-                className="transition hover:text-zinc-900 dark:hover:text-zinc-100"
+                className="transition hover:text-orange-500"
               >
                 แพ็กเกจ
               </a>
               <a
                 href="#how-it-works"
-                className="transition hover:text-zinc-900 dark:hover:text-zinc-100"
+                className="transition hover:text-orange-500"
               >
                 วิธีการทำงาน
               </a>
             </div>
           </div>
-          <div className="mt-8 border-t border-zinc-200 pt-8 text-center text-sm text-zinc-400 dark:border-zinc-800">
+          <div className="mt-8 border-t border-zinc-200 pt-8 text-center text-sm text-zinc-400">
             &copy; {new Date().getFullYear()} AdsBox. สงวนลิขสิทธิ์ทุกประการ
           </div>
         </div>
@@ -454,7 +454,7 @@ function StatItem({ value, label }: { value: string; label: string }) {
   return (
     <div className="text-center">
       <p className="text-2xl font-bold sm:text-3xl">{value}</p>
-      <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{label}</p>
+      <p className="mt-1 text-sm text-zinc-500">{label}</p>
     </div>
   );
 }
@@ -471,15 +471,15 @@ function StepCard({
   description: string;
 }) {
   return (
-    <div className="relative rounded-2xl border border-zinc-200 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-900">
-      <span className="absolute right-6 top-6 text-4xl font-bold text-zinc-100 dark:text-zinc-800">
+    <div className="relative rounded-2xl border border-zinc-200 bg-white p-8">
+      <span className="absolute right-6 top-6 text-4xl font-bold text-zinc-100">
         {step}
       </span>
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-400">
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-50 text-orange-500">
         {icon}
       </div>
       <h3 className="text-lg font-semibold">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+      <p className="mt-2 text-sm leading-relaxed text-zinc-500">
         {description}
       </p>
     </div>
@@ -503,21 +503,21 @@ function PricingCard({
     <div
       className={`relative flex flex-col justify-between rounded-2xl border p-6 ${
         popular
-          ? "border-blue-500 bg-white shadow-lg shadow-blue-500/10 dark:border-blue-400 dark:bg-zinc-900"
-          : "border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900"
+          ? "border-orange-500 bg-white shadow-lg shadow-orange-500/10"
+          : "border-zinc-200 bg-white"
       }`}
     >
       {popular && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 px-3 py-1 text-xs font-medium text-white">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange-500 px-3 py-1 text-xs font-medium text-white">
           ยอดนิยม
         </span>
       )}
       <div>
-        <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+        <p className="text-sm font-medium text-zinc-500">
           {name}
         </p>
         <p className="mt-4 text-3xl font-bold">{boxes}</p>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">กล่อง</p>
+        <p className="mt-1 text-sm text-zinc-500">กล่อง</p>
         <div className="mt-6 space-y-3">
           <Feature text={`ราคา ฿${price}`} />
           <Feature text={`เฉลี่ย ฿${perBox} / กล่อง`} />
@@ -529,8 +529,8 @@ function PricingCard({
         href="/login"
         className={`mt-8 block w-full rounded-xl py-3 text-center text-sm font-medium transition ${
           popular
-            ? "bg-blue-500 text-white shadow-lg shadow-blue-500/20 hover:bg-blue-600"
-            : "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+            ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600"
+            : "bg-orange-500 text-white hover:bg-orange-600"
         }`}
       >
         เลือกแพ็กเกจนี้
@@ -541,9 +541,9 @@ function PricingCard({
 
 function Feature({ text }: { text: string }) {
   return (
-    <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+    <div className="flex items-center gap-2 text-sm text-zinc-600">
       <svg
-        className="h-4 w-4 shrink-0 text-green-500"
+        className="h-4 w-4 shrink-0 text-orange-500"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={2}
@@ -570,12 +570,12 @@ function BenefitCard({
   description: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-400">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-6">
+      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 text-orange-500">
         {icon}
       </div>
       <h3 className="font-semibold">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+      <p className="mt-2 text-sm leading-relaxed text-zinc-500">
         {description}
       </p>
     </div>

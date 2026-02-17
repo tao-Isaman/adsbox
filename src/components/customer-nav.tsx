@@ -13,10 +13,10 @@ export function CustomerNav({ userName }: { userName: string }) {
   const pathname = usePathname();
 
   return (
-    <nav className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+    <nav className="border-b border-zinc-200 bg-white">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-8">
-          <Link href="/packages" className="text-lg font-bold">
+          <Link href="/packages" className="text-lg font-bold text-orange-500">
             AdsBox
           </Link>
           <div className="flex gap-1">
@@ -26,8 +26,8 @@ export function CustomerNav({ userName }: { userName: string }) {
                 href={link.href}
                 className={`rounded-md px-3 py-2 text-sm font-medium transition ${
                   pathname === link.href
-                    ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
-                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                    ? "bg-orange-50 text-orange-600"
+                    : "text-zinc-600 hover:text-orange-500"
                 }`}
               >
                 {link.label}
@@ -36,13 +36,13 @@ export function CustomerNav({ userName }: { userName: string }) {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-sm text-zinc-600 dark:text-zinc-400">
+          <span className="text-sm text-zinc-600">
             {userName}
           </span>
           <form action={signOut}>
             <button
               type="submit"
-              className="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+              className="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 transition hover:text-orange-500"
             >
               ออกจากระบบ
             </button>

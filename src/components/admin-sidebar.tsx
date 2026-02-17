@@ -14,9 +14,9 @@ export function AdminSidebar({ userName }: { userName: string }) {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-64 flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="border-b border-zinc-200 p-6 dark:border-zinc-800">
-        <Link href="/admin/dashboard" className="text-lg font-bold">
+    <aside className="flex w-64 flex-col border-r border-zinc-200 bg-white">
+      <div className="border-b border-zinc-200 p-6">
+        <Link href="/admin/dashboard" className="text-lg font-bold text-orange-500">
           AdsBox แอดมิน
         </Link>
       </div>
@@ -27,22 +27,22 @@ export function AdminSidebar({ userName }: { userName: string }) {
             href={link.href}
             className={`block rounded-md px-3 py-2 text-sm font-medium transition ${
               pathname === link.href
-                ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
-                : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+                ? "bg-orange-50 text-orange-600"
+                : "text-zinc-600 hover:bg-zinc-50 hover:text-orange-500"
             }`}
           >
             {link.label}
           </Link>
         ))}
       </nav>
-      <div className="border-t border-zinc-200 p-4 dark:border-zinc-800">
-        <p className="mb-2 truncate text-sm text-zinc-600 dark:text-zinc-400">
+      <div className="border-t border-zinc-200 p-4">
+        <p className="mb-2 truncate text-sm text-zinc-600">
           {userName}
         </p>
         <form action={signOut}>
           <button
             type="submit"
-            className="w-full rounded-md px-3 py-2 text-left text-sm font-medium text-zinc-600 transition hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+            className="w-full rounded-md px-3 py-2 text-left text-sm font-medium text-zinc-600 transition hover:bg-zinc-50 hover:text-orange-500"
           >
             ออกจากระบบ
           </button>
