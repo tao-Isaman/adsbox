@@ -12,12 +12,28 @@ export default async function OrdersPage() {
     .select(
       `
       *,
-      packages (name, box_amount, price),
-      quotations (quotation_number, amount, valid_until)
+      packages (name, box_amount, price)
     `
     )
     .eq("customer_id", user!.id)
     .order("created_at", { ascending: false });
+
+  // Fetch quotations separately to avoid breaking if table doesn't exist yet
+  const { data: quotations } = await supabase
+    .from("quotations")
+    .select("order_id, quotation_number, amount, valid_until")
+    .in(
+      "order_id",
+      (orders ?? []).map((o: { id: string }) => o.id)
+    );
+
+  const quotationsByOrderId = (quotations ?? []).reduce(
+    (acc: Record<string, { quotation_number: string; amount: number; valid_until: string | null }>, q: { order_id: string; quotation_number: string; amount: number; valid_until: string | null }) => {
+      acc[q.order_id] = q;
+      return acc;
+    },
+    {} as Record<string, { quotation_number: string; amount: number; valid_until: string | null }>
+  );
 
   return (
     <div>
@@ -51,13 +67,8 @@ export default async function OrdersPage() {
                 box_amount: number;
                 price: number;
               };
-              quotations: {
-                quotation_number: string;
-                amount: number;
-                valid_until: string | null;
-              }[];
             }) => {
-              const quotation = order.quotations?.[0] ?? null;
+              const quotation = quotationsByOrderId[order.id] ?? null;
 
               return (
                 <div

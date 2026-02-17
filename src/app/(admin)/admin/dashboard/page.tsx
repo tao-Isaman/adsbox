@@ -12,13 +12,29 @@ export default async function AdminDashboardPage() {
       `
       *,
       profiles:customer_id (customer_name, company_name, tel),
-      packages:package_id (name, box_amount, price),
-      quotations (quotation_number, amount)
+      packages:package_id (name, box_amount, price)
     `
     )
     .order("created_at", { ascending: false });
 
   const allOrders = orders ?? [];
+
+  // Fetch quotations separately to avoid breaking if table doesn't exist yet
+  const orderIds = allOrders.map((o: { id: string }) => o.id);
+  const { data: quotations } = orderIds.length > 0
+    ? await supabase
+        .from("quotations")
+        .select("order_id, quotation_number, amount")
+        .in("order_id", orderIds)
+    : { data: [] };
+
+  const quotationsByOrderId = (quotations ?? []).reduce(
+    (acc: Record<string, { quotation_number: string; amount: number }>, q: { order_id: string; quotation_number: string; amount: number }) => {
+      acc[q.order_id] = q;
+      return acc;
+    },
+    {} as Record<string, { quotation_number: string; amount: number }>
+  );
 
   const totalOrders = allOrders.length;
   const statusCounts = allOrders.reduce(
@@ -75,12 +91,8 @@ export default async function AdminDashboardPage() {
                   box_amount: number;
                   price: number;
                 };
-                quotations: {
-                  quotation_number: string;
-                  amount: number;
-                }[];
               }) => {
-                const quotation = order.quotations?.[0] ?? null;
+                const quotation = quotationsByOrderId[order.id] ?? null;
 
                 return (
                   <tr key={order.id} className="bg-white">
