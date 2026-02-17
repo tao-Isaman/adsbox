@@ -41,9 +41,9 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* ตารางคำสั่งซื้อ */}
-      <div className="mt-8 overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800">
+      <div className="mt-8 overflow-hidden rounded-lg border border-zinc-200">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
+          <thead className="border-b border-zinc-200 bg-zinc-50">
             <tr>
               <th className="px-4 py-3 font-medium">ลูกค้า</th>
               <th className="px-4 py-3 font-medium">บริษัท</th>
@@ -54,7 +54,7 @@ export default async function AdminDashboardPage() {
               <th className="px-4 py-3 font-medium">จัดการ</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
+          <tbody className="divide-y divide-zinc-200">
             {allOrders.map(
               (order: {
                 id: string;
@@ -71,7 +71,7 @@ export default async function AdminDashboardPage() {
                   price: number;
                 };
               }) => (
-                <tr key={order.id} className="bg-white dark:bg-zinc-900/50">
+                <tr key={order.id} className="bg-white">
                   <td className="px-4 py-3 font-medium">
                     {order.profiles.customer_name ?? "ไม่ระบุ"}
                   </td>
@@ -109,8 +109,8 @@ export default async function AdminDashboardPage() {
 
 function StatCard({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-      <p className="text-sm text-zinc-500 dark:text-zinc-400">{label}</p>
+    <div className="rounded-lg border border-zinc-200 bg-white p-4">
+      <p className="text-sm text-zinc-500">{label}</p>
       <p className="mt-1 text-2xl font-bold">{value}</p>
     </div>
   );

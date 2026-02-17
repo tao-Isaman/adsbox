@@ -13,13 +13,13 @@ export default async function AdminUsersPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold">จัดการผู้ใช้</h1>
-      <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+      <p className="mt-2 text-zinc-500">
         ผู้ใช้ที่ลงทะเบียนทั้งหมด {allProfiles.length} คน
       </p>
 
-      <div className="mt-6 overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800">
+      <div className="mt-6 overflow-hidden rounded-lg border border-zinc-200">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
+          <thead className="border-b border-zinc-200 bg-zinc-50">
             <tr>
               <th className="px-4 py-3 font-medium">ชื่อ</th>
               <th className="px-4 py-3 font-medium">บริษัท</th>
@@ -30,7 +30,7 @@ export default async function AdminUsersPage() {
               <th className="px-4 py-3 font-medium">วันที่สมัคร</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
+          <tbody className="divide-y divide-zinc-200">
             {allProfiles.map(
               (profile: {
                 id: string;
@@ -44,7 +44,7 @@ export default async function AdminUsersPage() {
               }) => (
                 <tr
                   key={profile.id}
-                  className="bg-white dark:bg-zinc-900/50"
+                  className="bg-white"
                 >
                   <td className="px-4 py-3 font-medium">
                     {profile.customer_name ?? "ไม่ระบุ"}
@@ -69,7 +69,7 @@ export default async function AdminUsersPage() {
                   </td>
                   <td className="px-4 py-3">
                     {profile.onboarding_completed ? (
-                      <span className="text-green-600 dark:text-green-400">
+                      <span className="text-green-600">
                         แล้ว
                       </span>
                     ) : (

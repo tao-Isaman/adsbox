@@ -21,14 +21,14 @@ export default async function OrdersPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold">คำสั่งซื้อของฉัน</h1>
-      <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+      <p className="mt-2 text-zinc-500">
         ติดตามสถานะคำสั่งซื้อโฆษณาของคุณ
       </p>
 
       {(!orders || orders.length === 0) && (
         <p className="mt-8 text-center text-zinc-400">
           ยังไม่มีคำสั่งซื้อ เลือกดู{" "}
-          <a href="/packages" className="underline">
+          <a href="/packages" className="text-orange-500 underline">
             แพ็กเกจ
           </a>{" "}
           เพื่อเริ่มต้น
@@ -36,9 +36,9 @@ export default async function OrdersPage() {
       )}
 
       {orders && orders.length > 0 && (
-        <div className="mt-6 overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800">
+        <div className="mt-6 overflow-hidden rounded-lg border border-zinc-200">
           <table className="w-full text-left text-sm">
-            <thead className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
+            <thead className="border-b border-zinc-200 bg-zinc-50">
               <tr>
                 <th className="px-4 py-3 font-medium">แพ็กเกจ</th>
                 <th className="px-4 py-3 font-medium">จำนวนกล่อง</th>
@@ -47,7 +47,7 @@ export default async function OrdersPage() {
                 <th className="px-4 py-3 font-medium">วันที่</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
+            <tbody className="divide-y divide-zinc-200">
               {orders.map(
                 (order: {
                   id: string;
@@ -61,7 +61,7 @@ export default async function OrdersPage() {
                 }) => (
                   <tr
                     key={order.id}
-                    className="bg-white dark:bg-zinc-900/50"
+                    className="bg-white"
                   >
                     <td className="px-4 py-3 font-medium">
                       {order.packages.name}

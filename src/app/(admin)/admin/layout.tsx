@@ -27,7 +27,7 @@ export default async function AdminLayout({
       <AdminSidebar
         userName={profile?.customer_name ?? user.email ?? "Admin"}
       />
-      <main className="flex-1 bg-zinc-50 p-8 dark:bg-zinc-950">
+      <main className="flex-1 bg-zinc-50 p-8">
         {children}
       </main>
     </div>

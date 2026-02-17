@@ -94,7 +94,7 @@ export function MatchingInterface({
         <h2 className="text-lg font-semibold">
           ออเดอร์ที่ยืนยันแล้ว (พร้อมจับคู่)
         </h2>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="mt-1 text-sm text-zinc-500">
           เลือกออเดอร์ 4 รายการจากแพ็กเกจเดียวกันเพื่อสร้างกลุ่มจับคู่
         </p>
 
@@ -106,7 +106,7 @@ export function MatchingInterface({
 
         {Object.entries(ordersByPackage).map(([pkgName, orders]) => (
           <div key={pkgName} className="mt-4">
-            <h3 className="mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            <h3 className="mb-2 text-sm font-medium text-zinc-700">
               {pkgName} ({orders.length} ออเดอร์)
             </h3>
             <div className="space-y-2">
@@ -125,8 +125,8 @@ export function MatchingInterface({
                       isSelected
                         ? "border-orange-500 bg-orange-50"
                         : isDisabled
-                          ? "cursor-not-allowed border-zinc-100 opacity-50 dark:border-zinc-800"
-                          : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
+                          ? "cursor-not-allowed border-zinc-100 opacity-50"
+                          : "border-zinc-200 hover:border-orange-300"
                     }`}
                   >
                     <input
@@ -134,14 +134,14 @@ export function MatchingInterface({
                       checked={isSelected}
                       disabled={isDisabled}
                       onChange={() => toggleOrder(order.id)}
-                      className="h-4 w-4 rounded border-zinc-300"
+                      className="h-4 w-4 rounded border-zinc-300 accent-orange-500"
                     />
                     <div className="flex-1">
                       <span className="text-sm font-medium">
                         {order.profiles.customer_name ?? "ไม่ทราบชื่อ"}
                       </span>
                       {order.profiles.company_name && (
-                        <span className="ml-2 text-sm text-zinc-500 dark:text-zinc-400">
+                        <span className="ml-2 text-sm text-zinc-500">
                           ({order.profiles.company_name})
                         </span>
                       )}
@@ -158,7 +158,7 @@ export function MatchingInterface({
 
         {/* ฟอร์มสร้างกลุ่ม */}
         {selected.length > 0 && (
-          <div className="mt-4 rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mt-4 rounded-lg border border-zinc-200 bg-white p-4">
             <p className="text-sm font-medium">
               เลือกแล้ว: {selected.length}/4 ออเดอร์
               {selectedPkgName && ` - ${selectedPkgName}`}
@@ -170,7 +170,7 @@ export function MatchingInterface({
                   value={groupName}
                   onChange={(e) => setGroupName(e.target.value)}
                   placeholder="ชื่อกลุ่ม..."
-                  className="flex-1 rounded-md border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800"
+                  className="flex-1 rounded-md border border-zinc-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
                 />
                 <button
                   onClick={handleCreateGroup}
@@ -197,12 +197,12 @@ export function MatchingInterface({
           {matchGroups.map((group) => (
             <div
               key={group.id}
-              className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900"
+              className="rounded-lg border border-zinc-200 bg-white p-4"
             >
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-medium">{group.name}</h3>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                  <p className="text-sm text-zinc-500">
                     {group.packages.name}
                   </p>
                 </div>
@@ -236,13 +236,13 @@ export function MatchingInterface({
                 {group.match_group_members.map((member) => (
                   <div
                     key={member.id}
-                    className="rounded-md bg-zinc-50 p-2 text-sm dark:bg-zinc-800"
+                    className="rounded-md bg-zinc-50 p-2 text-sm"
                   >
                     <p className="font-medium">
                       {member.orders.profiles.customer_name ?? "ไม่ทราบชื่อ"}
                     </p>
                     {member.orders.profiles.company_name && (
-                      <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                      <p className="text-xs text-zinc-500">
                         {member.orders.profiles.company_name}
                       </p>
                     )}

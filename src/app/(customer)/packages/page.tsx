@@ -13,7 +13,7 @@ export default async function PackagesPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold">แพ็กเกจโฆษณา</h1>
-      <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+      <p className="mt-2 text-zinc-500">
         เลือกแพ็กเกจเพื่อพิมพ์โลโก้ของคุณลงบนกล่องของเรา
       </p>
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

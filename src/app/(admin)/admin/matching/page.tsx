@@ -37,7 +37,7 @@ export default async function AdminMatchingPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold">ระบบจับคู่</h1>
-      <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+      <p className="mt-2 text-zinc-500">
         จัดกลุ่มลูกค้า 4 รายที่ซื้อแพ็กเกจเดียวกันเพื่อพิมพ์โลโก้ลงกล่อง
       </p>
       <div className="mt-6">

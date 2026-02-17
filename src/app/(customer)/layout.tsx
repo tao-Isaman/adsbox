@@ -21,7 +21,7 @@ export default async function CustomerLayout({
     .single();
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-50">
       <CustomerNav
         userName={profile?.customer_name ?? user.email ?? "User"}
       />

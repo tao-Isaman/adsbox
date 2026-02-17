@@ -13,17 +13,17 @@ export default function OnboardingPage() {
   );
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-950">
-      <div className="w-full max-w-md space-y-6 rounded-xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50">
+      <div className="w-full max-w-md space-y-6 rounded-xl border border-zinc-200 bg-white p-8 shadow-sm">
         <div>
           <h1 className="text-2xl font-bold">กรอกข้อมูลของคุณ</h1>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-500">
             กรุณากรอกข้อมูลเพื่อเริ่มต้นใช้งาน AdsBox
           </p>
         </div>
 
         {state?.error && (
-          <div className="rounded-md bg-red-50 p-3 text-sm text-red-700 dark:bg-red-950 dark:text-red-400">
+          <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">
             {state.error}
           </div>
         )}
@@ -32,7 +32,7 @@ export default function OnboardingPage() {
           <div>
             <label
               htmlFor="customer_name"
-              className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
+              className="block text-sm font-medium text-zinc-700"
             >
               ชื่อ-นามสกุล *
             </label>
@@ -41,7 +41,7 @@ export default function OnboardingPage() {
               name="customer_name"
               type="text"
               required
-              className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 dark:border-zinc-700 dark:bg-zinc-800"
+              className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
               placeholder="ชื่อ-นามสกุล"
             />
           </div>
@@ -49,7 +49,7 @@ export default function OnboardingPage() {
           <div>
             <label
               htmlFor="company_name"
-              className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
+              className="block text-sm font-medium text-zinc-700"
             >
               ชื่อบริษัท
             </label>
@@ -57,7 +57,7 @@ export default function OnboardingPage() {
               id="company_name"
               name="company_name"
               type="text"
-              className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 dark:border-zinc-700 dark:bg-zinc-800"
+              className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
               placeholder="ชื่อบริษัท"
             />
           </div>
@@ -65,7 +65,7 @@ export default function OnboardingPage() {
           <div>
             <label
               htmlFor="tel"
-              className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
+              className="block text-sm font-medium text-zinc-700"
             >
               เบอร์โทรศัพท์ *
             </label>
@@ -74,7 +74,7 @@ export default function OnboardingPage() {
               name="tel"
               type="tel"
               required
-              className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 dark:border-zinc-700 dark:bg-zinc-800"
+              className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
               placeholder="08X-XXX-XXXX"
             />
           </div>
@@ -82,7 +82,7 @@ export default function OnboardingPage() {
           <div>
             <label
               htmlFor="address"
-              className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
+              className="block text-sm font-medium text-zinc-700"
             >
               ที่อยู่
             </label>
@@ -90,7 +90,7 @@ export default function OnboardingPage() {
               id="address"
               name="address"
               rows={3}
-              className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 dark:border-zinc-700 dark:bg-zinc-800"
+              className="mt-1 block w-full rounded-md border border-zinc-300 px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
               placeholder="ที่อยู่"
             />
           </div>
