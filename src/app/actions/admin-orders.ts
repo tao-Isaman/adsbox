@@ -13,7 +13,7 @@ export async function confirmOrder(orderId: string) {
     .eq("status", "pending");
 
   if (error) {
-    return { error: "Failed to confirm order" };
+    return { error: "ไม่สามารถยืนยันคำสั่งซื้อได้" };
   }
 
   revalidatePath("/admin/dashboard");

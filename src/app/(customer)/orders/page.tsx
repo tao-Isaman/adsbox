@@ -20,18 +20,18 @@ export default async function OrdersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">My Orders</h1>
+      <h1 className="text-2xl font-bold">คำสั่งซื้อของฉัน</h1>
       <p className="mt-2 text-zinc-500 dark:text-zinc-400">
-        Track the status of your ad orders.
+        ติดตามสถานะคำสั่งซื้อโฆษณาของคุณ
       </p>
 
       {(!orders || orders.length === 0) && (
         <p className="mt-8 text-center text-zinc-400">
-          No orders yet. Browse our{" "}
+          ยังไม่มีคำสั่งซื้อ เลือกดู{" "}
           <a href="/packages" className="underline">
-            packages
+            แพ็กเกจ
           </a>{" "}
-          to get started.
+          เพื่อเริ่มต้น
         </p>
       )}
 
@@ -40,11 +40,11 @@ export default async function OrdersPage() {
           <table className="w-full text-left text-sm">
             <thead className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
               <tr>
-                <th className="px-4 py-3 font-medium">Package</th>
-                <th className="px-4 py-3 font-medium">Boxes</th>
-                <th className="px-4 py-3 font-medium">Price</th>
-                <th className="px-4 py-3 font-medium">Status</th>
-                <th className="px-4 py-3 font-medium">Date</th>
+                <th className="px-4 py-3 font-medium">แพ็กเกจ</th>
+                <th className="px-4 py-3 font-medium">จำนวนกล่อง</th>
+                <th className="px-4 py-3 font-medium">ราคา</th>
+                <th className="px-4 py-3 font-medium">สถานะ</th>
+                <th className="px-4 py-3 font-medium">วันที่</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
@@ -80,7 +80,7 @@ export default async function OrdersPage() {
                       <StatusBadge status={order.status} />
                     </td>
                     <td className="px-4 py-3 text-zinc-500">
-                      {new Date(order.created_at).toLocaleDateString()}
+                      {new Date(order.created_at).toLocaleDateString("th-TH")}
                     </td>
                   </tr>
                 )

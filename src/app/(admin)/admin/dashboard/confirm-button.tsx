@@ -18,7 +18,7 @@ export function ConfirmOrderButton({ orderId }: { orderId: string }) {
       disabled={isPending}
       className="rounded-md bg-blue-500 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-blue-600 disabled:opacity-50"
     >
-      {isPending ? "Confirming..." : "Confirm"}
+      {isPending ? "กำลังยืนยัน..." : "ยืนยัน"}
     </button>
   );
 }

@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { signOut } from "@/app/actions/auth";
 
 const navLinks = [
-  { href: "/packages", label: "Packages" },
-  { href: "/orders", label: "My Orders" },
+  { href: "/packages", label: "แพ็กเกจ" },
+  { href: "/orders", label: "คำสั่งซื้อ" },
 ];
 
 export function CustomerNav({ userName }: { userName: string }) {
@@ -44,7 +44,7 @@ export function CustomerNav({ userName }: { userName: string }) {
               type="submit"
               className="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             >
-              Sign out
+              ออกจากระบบ
             </button>
           </form>
         </div>

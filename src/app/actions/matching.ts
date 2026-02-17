@@ -5,19 +5,18 @@ import { createClient } from "@/lib/supabase/server";
 
 export async function createMatchGroup(name: string, orderIds: string[]) {
   if (orderIds.length !== 4) {
-    return { error: "Exactly 4 orders are required for a match group" };
+    return { error: "ต้องเลือกออเดอร์ 4 รายการเพื่อสร้างกลุ่ม" };
   }
 
   const supabase = await createClient();
 
-  // Fetch orders to validate and get the package_id
   const { data: orders } = await supabase
     .from("orders")
     .select("id, package_id, status")
     .in("id", orderIds);
 
   if (!orders || orders.length !== 4) {
-    return { error: "One or more orders not found" };
+    return { error: "ไม่พบออเดอร์บางรายการ" };
   }
 
   const packageId = orders[0].package_id;
@@ -25,13 +24,12 @@ export async function createMatchGroup(name: string, orderIds: string[]) {
   const allConfirmed = orders.every((o) => o.status === "confirmed");
 
   if (!allSamePackage) {
-    return { error: "All orders must be from the same package" };
+    return { error: "ออเดอร์ทั้งหมดต้องเป็นแพ็กเกจเดียวกัน" };
   }
   if (!allConfirmed) {
-    return { error: "All orders must have confirmed status" };
+    return { error: "ออเดอร์ทั้งหมดต้องมีสถานะยืนยันแล้ว" };
   }
 
-  // Create the match group
   const { data: group, error: groupError } = await supabase
     .from("match_groups")
     .insert({ name, package_id: packageId })
@@ -39,10 +37,9 @@ export async function createMatchGroup(name: string, orderIds: string[]) {
     .single();
 
   if (groupError || !group) {
-    return { error: "Failed to create match group" };
+    return { error: "ไม่สามารถสร้างกลุ่มจับคู่ได้" };
   }
 
-  // Add members
   const members = orderIds.map((orderId) => ({
     match_group_id: group.id,
     order_id: orderId,
@@ -53,17 +50,16 @@ export async function createMatchGroup(name: string, orderIds: string[]) {
     .insert(members);
 
   if (membersError) {
-    return { error: "Failed to add members to match group" };
+    return { error: "ไม่สามารถเพิ่มสมาชิกในกลุ่มได้" };
   }
 
-  // Update order statuses to 'matched'
   const { error: updateError } = await supabase
     .from("orders")
     .update({ status: "matched" })
     .in("id", orderIds);
 
   if (updateError) {
-    return { error: "Failed to update order statuses" };
+    return { error: "ไม่สามารถอัปเดตสถานะออเดอร์ได้" };
   }
 
   revalidatePath("/admin/matching");
@@ -82,10 +78,9 @@ export async function updateMatchGroupStatus(
     .eq("id", groupId);
 
   if (error) {
-    return { error: "Failed to update match group status" };
+    return { error: "ไม่สามารถอัปเดตสถานะกลุ่มได้" };
   }
 
-  // Cascade status to member orders
   if (status === "printing" || status === "completed") {
     const { data: members } = await supabase
       .from("match_group_members")

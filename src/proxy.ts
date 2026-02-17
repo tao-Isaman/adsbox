@@ -33,10 +33,10 @@ export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Public routes that do not require auth
-  const publicRoutes = ["/login", "/auth/callback"];
-  const isPublicRoute = publicRoutes.some((route) =>
-    pathname.startsWith(route)
-  );
+  const isPublicRoute =
+    pathname === "/" ||
+    pathname === "/login" ||
+    pathname.startsWith("/auth/callback");
 
   if (!user && !isPublicRoute) {
     const url = request.nextUrl.clone();

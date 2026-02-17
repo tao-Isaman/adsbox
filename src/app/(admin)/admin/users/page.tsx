@@ -12,22 +12,22 @@ export default async function AdminUsersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">User Management</h1>
+      <h1 className="text-2xl font-bold">จัดการผู้ใช้</h1>
       <p className="mt-2 text-zinc-500 dark:text-zinc-400">
-        {allProfiles.length} registered users
+        ผู้ใช้ที่ลงทะเบียนทั้งหมด {allProfiles.length} คน
       </p>
 
       <div className="mt-6 overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800">
         <table className="w-full text-left text-sm">
           <thead className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
             <tr>
-              <th className="px-4 py-3 font-medium">Name</th>
-              <th className="px-4 py-3 font-medium">Company</th>
-              <th className="px-4 py-3 font-medium">Phone</th>
-              <th className="px-4 py-3 font-medium">Address</th>
-              <th className="px-4 py-3 font-medium">Role</th>
-              <th className="px-4 py-3 font-medium">Onboarded</th>
-              <th className="px-4 py-3 font-medium">Joined</th>
+              <th className="px-4 py-3 font-medium">ชื่อ</th>
+              <th className="px-4 py-3 font-medium">บริษัท</th>
+              <th className="px-4 py-3 font-medium">เบอร์โทร</th>
+              <th className="px-4 py-3 font-medium">ที่อยู่</th>
+              <th className="px-4 py-3 font-medium">บทบาท</th>
+              <th className="px-4 py-3 font-medium">ลงทะเบียน</th>
+              <th className="px-4 py-3 font-medium">วันที่สมัคร</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
@@ -47,7 +47,7 @@ export default async function AdminUsersPage() {
                   className="bg-white dark:bg-zinc-900/50"
                 >
                   <td className="px-4 py-3 font-medium">
-                    {profile.customer_name ?? "N/A"}
+                    {profile.customer_name ?? "ไม่ระบุ"}
                   </td>
                   <td className="px-4 py-3 text-zinc-500">
                     {profile.company_name ?? "-"}
@@ -58,26 +58,26 @@ export default async function AdminUsersPage() {
                   </td>
                   <td className="px-4 py-3">
                     <span
-                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
                         profile.role === "admin"
                           ? "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400"
                           : "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-400"
                       }`}
                     >
-                      {profile.role}
+                      {profile.role === "admin" ? "แอดมิน" : "ลูกค้า"}
                     </span>
                   </td>
                   <td className="px-4 py-3">
                     {profile.onboarding_completed ? (
                       <span className="text-green-600 dark:text-green-400">
-                        Yes
+                        แล้ว
                       </span>
                     ) : (
-                      <span className="text-zinc-400">No</span>
+                      <span className="text-zinc-400">ยังไม่</span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-zinc-500">
-                    {new Date(profile.created_at).toLocaleDateString()}
+                    {new Date(profile.created_at).toLocaleDateString("th-TH")}
                   </td>
                 </tr>
               )

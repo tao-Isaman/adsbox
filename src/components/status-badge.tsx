@@ -11,14 +11,22 @@ const statusStyles: Record<string, string> = {
     "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
 };
 
+const statusLabels: Record<string, string> = {
+  pending: "รอดำเนินการ",
+  confirmed: "ยืนยันแล้ว",
+  matched: "จับคู่แล้ว",
+  printing: "กำลังพิมพ์",
+  completed: "เสร็จสิ้น",
+};
+
 export function StatusBadge({ status }: { status: string }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
         statusStyles[status] ?? "bg-zinc-100 text-zinc-800"
       }`}
     >
-      {status}
+      {statusLabels[status] ?? status}
     </span>
   );
 }

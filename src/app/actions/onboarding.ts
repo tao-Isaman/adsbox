@@ -17,7 +17,7 @@ export async function completeOnboarding(formData: FormData) {
   const companyName = formData.get("company_name") as string;
 
   if (!customerName || !tel) {
-    return { error: "Customer name and phone number are required" };
+    return { error: "กรุณากรอกชื่อและเบอร์โทรศัพท์" };
   }
 
   const { error } = await supabase
@@ -32,7 +32,7 @@ export async function completeOnboarding(formData: FormData) {
     .eq("id", user.id);
 
   if (error) {
-    return { error: "Failed to save profile. Please try again." };
+    return { error: "ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่อีกครั้ง" };
   }
 
   redirect("/packages");

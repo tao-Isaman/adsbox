@@ -19,7 +19,7 @@ export default function LoginPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold">AdsBox</h1>
           <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-            Sign in to manage your ad boxes
+            เข้าสู่ระบบเพื่อจัดการโฆษณาของคุณ
           </p>
         </div>
         <button
@@ -44,7 +44,7 @@ export default function LoginPage() {
               fill="#EA4335"
             />
           </svg>
-          Sign in with Google
+          เข้าสู่ระบบด้วย Google
         </button>
       </div>
     </div>

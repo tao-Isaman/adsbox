@@ -18,7 +18,7 @@ export async function createOrder(packageId: string) {
   });
 
   if (error) {
-    return { error: "Failed to create order. Please try again." };
+    return { error: "ไม่สามารถสร้างคำสั่งซื้อได้ กรุณาลองใหม่อีกครั้ง" };
   }
 
   redirect("/orders");

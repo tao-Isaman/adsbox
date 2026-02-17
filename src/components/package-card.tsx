@@ -25,16 +25,16 @@ export function PackageCard({ pkg }: { pkg: Package }) {
         <div>
           <h3 className="text-lg font-semibold">{pkg.name}</h3>
           <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-            Custom package for large orders
+            แพ็กเกจสำหรับออเดอร์ขนาดใหญ่
           </p>
         </div>
         <div className="mt-6">
-          <p className="text-2xl font-bold">Custom Price</p>
+          <p className="text-2xl font-bold">ราคาพิเศษ</p>
           <a
             href="mailto:contact@adsbox.com"
             className="mt-4 block w-full rounded-lg border border-zinc-300 px-4 py-2.5 text-center text-sm font-medium transition hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
           >
-            Contact Us
+            ติดต่อเรา
           </a>
         </div>
       </div>
@@ -46,7 +46,7 @@ export function PackageCard({ pkg }: { pkg: Package }) {
       <div>
         <h3 className="text-lg font-semibold">{pkg.name}</h3>
         <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-          {pkg.box_amount.toLocaleString()} boxes
+          {pkg.box_amount.toLocaleString()} กล่อง
         </p>
       </div>
       <div className="mt-6">
@@ -56,7 +56,7 @@ export function PackageCard({ pkg }: { pkg: Package }) {
           disabled={isPending}
           className="mt-4 w-full rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
         >
-          {isPending ? "Processing..." : "Buy Now"}
+          {isPending ? "กำลังดำเนินการ..." : "สั่งซื้อ"}
         </button>
       </div>
     </div>

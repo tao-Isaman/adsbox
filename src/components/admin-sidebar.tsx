@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { signOut } from "@/app/actions/auth";
 
 const sidebarLinks = [
-  { href: "/admin/dashboard", label: "Dashboard" },
-  { href: "/admin/users", label: "Users" },
-  { href: "/admin/matching", label: "Matching" },
+  { href: "/admin/dashboard", label: "แดชบอร์ด" },
+  { href: "/admin/users", label: "จัดการผู้ใช้" },
+  { href: "/admin/matching", label: "จับคู่กลุ่ม" },
 ];
 
 export function AdminSidebar({ userName }: { userName: string }) {
@@ -17,7 +17,7 @@ export function AdminSidebar({ userName }: { userName: string }) {
     <aside className="flex w-64 flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
       <div className="border-b border-zinc-200 p-6 dark:border-zinc-800">
         <Link href="/admin/dashboard" className="text-lg font-bold">
-          AdsBox Admin
+          AdsBox แอดมิน
         </Link>
       </div>
       <nav className="flex-1 space-y-1 p-4">
@@ -44,7 +44,7 @@ export function AdminSidebar({ userName }: { userName: string }) {
             type="submit"
             className="w-full rounded-md px-3 py-2 text-left text-sm font-medium text-zinc-600 transition hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
           >
-            Sign out
+            ออกจากระบบ
           </button>
         </form>
       </div>

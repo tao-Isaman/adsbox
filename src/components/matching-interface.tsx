@@ -40,7 +40,6 @@ export function MatchingInterface({
   const [groupName, setGroupName] = useState("");
   const [isPending, startTransition] = useTransition();
 
-  // Group unmatched orders by package name
   const ordersByPackage = unmatchedOrders.reduce(
     (acc, order) => {
       const pkgName = order.packages.name;
@@ -90,25 +89,25 @@ export function MatchingInterface({
 
   return (
     <div className="space-y-8">
-      {/* Unmatched Orders Section */}
+      {/* ออเดอร์ที่ยังไม่ได้จับคู่ */}
       <section>
         <h2 className="text-lg font-semibold">
-          Confirmed Orders (Ready to Match)
+          ออเดอร์ที่ยืนยันแล้ว (พร้อมจับคู่)
         </h2>
         <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-          Select exactly 4 orders from the same package to create a match group.
+          เลือกออเดอร์ 4 รายการจากแพ็กเกจเดียวกันเพื่อสร้างกลุ่มจับคู่
         </p>
 
         {Object.keys(ordersByPackage).length === 0 && (
           <p className="mt-4 text-sm text-zinc-400">
-            No confirmed orders available for matching.
+            ไม่มีออเดอร์ที่พร้อมจับคู่ในขณะนี้
           </p>
         )}
 
         {Object.entries(ordersByPackage).map(([pkgName, orders]) => (
           <div key={pkgName} className="mt-4">
             <h3 className="mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-              {pkgName} ({orders.length} orders)
+              {pkgName} ({orders.length} ออเดอร์)
             </h3>
             <div className="space-y-2">
               {orders.map((order) => {
@@ -139,7 +138,7 @@ export function MatchingInterface({
                     />
                     <div className="flex-1">
                       <span className="text-sm font-medium">
-                        {order.profiles.customer_name ?? "Unknown"}
+                        {order.profiles.customer_name ?? "ไม่ทราบชื่อ"}
                       </span>
                       {order.profiles.company_name && (
                         <span className="ml-2 text-sm text-zinc-500 dark:text-zinc-400">
@@ -148,7 +147,7 @@ export function MatchingInterface({
                       )}
                     </div>
                     <span className="text-xs text-zinc-400">
-                      {new Date(order.created_at).toLocaleDateString()}
+                      {new Date(order.created_at).toLocaleDateString("th-TH")}
                     </span>
                   </label>
                 );
@@ -157,11 +156,11 @@ export function MatchingInterface({
           </div>
         ))}
 
-        {/* Create Group Form */}
+        {/* ฟอร์มสร้างกลุ่ม */}
         {selected.length > 0 && (
           <div className="mt-4 rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <p className="text-sm font-medium">
-              Selected: {selected.length}/4 orders
+              เลือกแล้ว: {selected.length}/4 ออเดอร์
               {selectedPkgName && ` - ${selectedPkgName}`}
             </p>
             {selected.length === 4 && (
@@ -170,7 +169,7 @@ export function MatchingInterface({
                   type="text"
                   value={groupName}
                   onChange={(e) => setGroupName(e.target.value)}
-                  placeholder="Group name..."
+                  placeholder="ชื่อกลุ่ม..."
                   className="flex-1 rounded-md border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800"
                 />
                 <button
@@ -178,7 +177,7 @@ export function MatchingInterface({
                   disabled={isPending || !groupName.trim()}
                   className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900"
                 >
-                  {isPending ? "Creating..." : "Create Group"}
+                  {isPending ? "กำลังสร้าง..." : "สร้างกลุ่ม"}
                 </button>
               </div>
             )}
@@ -186,12 +185,12 @@ export function MatchingInterface({
         )}
       </section>
 
-      {/* Existing Match Groups Section */}
+      {/* กลุ่มที่จับคู่แล้ว */}
       <section>
-        <h2 className="text-lg font-semibold">Match Groups</h2>
+        <h2 className="text-lg font-semibold">กลุ่มจับคู่</h2>
         {matchGroups.length === 0 && (
           <p className="mt-2 text-sm text-zinc-400">
-            No match groups created yet.
+            ยังไม่มีกลุ่มจับคู่
           </p>
         )}
         <div className="mt-4 space-y-4">
@@ -217,7 +216,7 @@ export function MatchingInterface({
                       disabled={isPending}
                       className="rounded-md bg-orange-500 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-orange-600 disabled:opacity-50"
                     >
-                      Start Printing
+                      เริ่มพิมพ์
                     </button>
                   )}
                   {group.status === "printing" && (
@@ -228,7 +227,7 @@ export function MatchingInterface({
                       disabled={isPending}
                       className="rounded-md bg-green-500 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-green-600 disabled:opacity-50"
                     >
-                      Mark Complete
+                      เสร็จสิ้น
                     </button>
                   )}
                 </div>
@@ -240,7 +239,7 @@ export function MatchingInterface({
                     className="rounded-md bg-zinc-50 p-2 text-sm dark:bg-zinc-800"
                   >
                     <p className="font-medium">
-                      {member.orders.profiles.customer_name ?? "Unknown"}
+                      {member.orders.profiles.customer_name ?? "ไม่ทราบชื่อ"}
                     </p>
                     {member.orders.profiles.company_name && (
                       <p className="text-xs text-zinc-500 dark:text-zinc-400">
