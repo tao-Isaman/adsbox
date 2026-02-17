@@ -19,17 +19,21 @@ export default async function AdminDashboardPage() {
 
   const allOrders = orders ?? [];
 
-  // Fetch quotations separately to avoid breaking if table doesn't exist yet
+  // Fetch quotations
   const orderIds = allOrders.map((o: { id: string }) => o.id);
-  const { data: quotations } = orderIds.length > 0
-    ? await supabase
-        .from("quotations")
-        .select("order_id, quotation_number, amount")
-        .in("order_id", orderIds)
-    : { data: [] };
+  const { data: quotations } =
+    orderIds.length > 0
+      ? await supabase
+          .from("quotations")
+          .select("order_id, quotation_number, amount")
+          .in("order_id", orderIds)
+      : { data: [] };
 
   const quotationsByOrderId = (quotations ?? []).reduce(
-    (acc: Record<string, { quotation_number: string; amount: number }>, q: { order_id: string; quotation_number: string; amount: number }) => {
+    (
+      acc: Record<string, { quotation_number: string; amount: number }>,
+      q: { order_id: string; quotation_number: string; amount: number }
+    ) => {
       acc[q.order_id] = q;
       return acc;
     },
@@ -78,19 +82,19 @@ export default async function AdminDashboardPage() {
               (order: {
                 id: string;
                 status: string;
-                contact_person: string | null;
-                company_name: string | null;
+                contact_person?: string | null;
+                company_name?: string | null;
                 created_at: string;
                 profiles: {
                   customer_name: string | null;
                   company_name: string | null;
                   tel: string | null;
-                };
+                } | null;
                 packages: {
                   name: string;
                   box_amount: number;
                   price: number;
-                };
+                } | null;
               }) => {
                 const quotation = quotationsByOrderId[order.id] ?? null;
 
@@ -99,10 +103,10 @@ export default async function AdminDashboardPage() {
                     <td className="px-4 py-3">
                       <p className="font-medium">
                         {order.contact_person ??
-                          order.profiles.customer_name ??
+                          order.profiles?.customer_name ??
                           "ไม่ระบุ"}
                       </p>
-                      {order.profiles.tel && (
+                      {order.profiles?.tel && (
                         <p className="text-xs text-zinc-400">
                           {order.profiles.tel}
                         </p>
@@ -110,18 +114,20 @@ export default async function AdminDashboardPage() {
                     </td>
                     <td className="px-4 py-3 text-zinc-500">
                       {order.company_name ??
-                        order.profiles.company_name ??
+                        order.profiles?.company_name ??
                         "-"}
                     </td>
                     <td className="px-4 py-3">
-                      <p>{order.packages.name}</p>
-                      <p className="text-xs text-zinc-400">
-                        {new Intl.NumberFormat("th-TH", {
-                          style: "currency",
-                          currency: "THB",
-                          minimumFractionDigits: 0,
-                        }).format(order.packages.price)}
-                      </p>
+                      <p>{order.packages?.name ?? "-"}</p>
+                      {order.packages && (
+                        <p className="text-xs text-zinc-400">
+                          {new Intl.NumberFormat("th-TH", {
+                            style: "currency",
+                            currency: "THB",
+                            minimumFractionDigits: 0,
+                          }).format(order.packages.price)}
+                        </p>
+                      )}
                     </td>
                     <td className="px-4 py-3">
                       {quotation ? (
@@ -151,7 +157,7 @@ export default async function AdminDashboardPage() {
                       {order.status === "pending" && (
                         <CreateQuotationButton
                           orderId={order.id}
-                          packagePrice={order.packages.price}
+                          packagePrice={order.packages?.price ?? 0}
                         />
                       )}
                       {order.status === "quoted" && (

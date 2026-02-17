@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 
 export async function createOrder(
@@ -38,5 +39,6 @@ export async function createOrder(
     return { error: "ไม่สามารถสร้างคำสั่งซื้อได้ กรุณาลองใหม่อีกครั้ง" };
   }
 
+  revalidatePath("/orders");
   redirect("/orders");
 }

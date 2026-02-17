@@ -50,6 +50,7 @@ export async function createQuotation(
   }
 
   revalidatePath("/admin/dashboard");
+  revalidatePath("/orders");
   return { success: true as const };
 }
 
@@ -67,5 +68,6 @@ export async function confirmPayment(orderId: string) {
   }
 
   revalidatePath("/admin/dashboard");
+  revalidatePath("/orders");
   return { success: true };
 }

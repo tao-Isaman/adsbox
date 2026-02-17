@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 import { StatusBadge } from "@/components/status-badge";
 
 export default async function OrdersPage() {
@@ -7,28 +8,36 @@ export default async function OrdersPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
+  if (!user) redirect("/login");
+
   const { data: orders } = await supabase
     .from("orders")
     .select(
       `
       *,
-      packages (name, box_amount, price)
+      packages:package_id (name, box_amount, price)
     `
     )
-    .eq("customer_id", user!.id)
+    .eq("customer_id", user.id)
     .order("created_at", { ascending: false });
 
-  // Fetch quotations separately to avoid breaking if table doesn't exist yet
-  const { data: quotations } = await supabase
-    .from("quotations")
-    .select("order_id, quotation_number, amount, valid_until")
-    .in(
-      "order_id",
-      (orders ?? []).map((o: { id: string }) => o.id)
-    );
+  const allOrders = orders ?? [];
+
+  // Fetch quotations
+  const orderIds = allOrders.map((o: { id: string }) => o.id);
+  const { data: quotations } =
+    orderIds.length > 0
+      ? await supabase
+          .from("quotations")
+          .select("order_id, quotation_number, amount, valid_until")
+          .in("order_id", orderIds)
+      : { data: [] };
 
   const quotationsByOrderId = (quotations ?? []).reduce(
-    (acc: Record<string, { quotation_number: string; amount: number; valid_until: string | null }>, q: { order_id: string; quotation_number: string; amount: number; valid_until: string | null }) => {
+    (
+      acc: Record<string, { quotation_number: string; amount: number; valid_until: string | null }>,
+      q: { order_id: string; quotation_number: string; amount: number; valid_until: string | null }
+    ) => {
       acc[q.order_id] = q;
       return acc;
     },
@@ -42,7 +51,7 @@ export default async function OrdersPage() {
         ติดตามสถานะคำสั่งซื้อโฆษณาของคุณ
       </p>
 
-      {(!orders || orders.length === 0) && (
+      {allOrders.length === 0 && (
         <p className="mt-8 text-center text-zinc-400">
           ยังไม่มีคำสั่งซื้อ เลือกดู{" "}
           <a href="/packages" className="text-orange-500 underline">
@@ -52,21 +61,21 @@ export default async function OrdersPage() {
         </p>
       )}
 
-      {orders && orders.length > 0 && (
+      {allOrders.length > 0 && (
         <div className="mt-6 space-y-4">
-          {orders.map(
+          {allOrders.map(
             (order: {
               id: string;
               status: string;
-              contact_person: string | null;
-              company_name: string | null;
-              ad_details: string | null;
+              contact_person?: string | null;
+              company_name?: string | null;
+              ad_details?: string | null;
               created_at: string;
               packages: {
                 name: string;
                 box_amount: number;
                 price: number;
-              };
+              } | null;
             }) => {
               const quotation = quotationsByOrderId[order.id] ?? null;
 
@@ -77,15 +86,18 @@ export default async function OrdersPage() {
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="font-semibold">{order.packages.name}</h3>
-                      <p className="text-sm text-zinc-500">
-                        {order.packages.box_amount.toLocaleString()} กล่อง
-                      </p>
+                      <h3 className="font-semibold">
+                        {order.packages?.name ?? "แพ็กเกจ"}
+                      </h3>
+                      {order.packages && (
+                        <p className="text-sm text-zinc-500">
+                          {order.packages.box_amount.toLocaleString()} กล่อง
+                        </p>
+                      )}
                     </div>
                     <StatusBadge status={order.status} />
                   </div>
 
-                  {/* Order details */}
                   <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
                     <div>
                       <p className="text-zinc-400">ผู้ติดต่อ</p>
@@ -105,19 +117,20 @@ export default async function OrdersPage() {
                         {new Date(order.created_at).toLocaleDateString("th-TH")}
                       </p>
                     </div>
-                    <div>
-                      <p className="text-zinc-400">ราคาแพ็กเกจ</p>
-                      <p className="font-medium">
-                        {new Intl.NumberFormat("th-TH", {
-                          style: "currency",
-                          currency: "THB",
-                          minimumFractionDigits: 0,
-                        }).format(order.packages.price)}
-                      </p>
-                    </div>
+                    {order.packages && (
+                      <div>
+                        <p className="text-zinc-400">ราคาแพ็กเกจ</p>
+                        <p className="font-medium">
+                          {new Intl.NumberFormat("th-TH", {
+                            style: "currency",
+                            currency: "THB",
+                            minimumFractionDigits: 0,
+                          }).format(order.packages.price)}
+                        </p>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Quotation details */}
                   {quotation && (
                     <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-3">
                       <div className="flex items-center justify-between">
@@ -140,20 +153,15 @@ export default async function OrdersPage() {
                       {quotation.valid_until && (
                         <p className="mt-1 text-xs text-blue-500">
                           ใช้ได้ถึง{" "}
-                          {new Date(quotation.valid_until).toLocaleDateString(
-                            "th-TH"
-                          )}
+                          {new Date(quotation.valid_until).toLocaleDateString("th-TH")}
                         </p>
                       )}
                     </div>
                   )}
 
-                  {/* Ad details */}
                   {order.ad_details && (
                     <div className="mt-3">
-                      <p className="text-xs text-zinc-400">
-                        รายละเอียดโฆษณา
-                      </p>
+                      <p className="text-xs text-zinc-400">รายละเอียดโฆษณา</p>
                       <p className="mt-1 text-sm text-zinc-600">
                         {order.ad_details}
                       </p>
