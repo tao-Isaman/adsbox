@@ -1,6 +1,7 @@
 const statusStyles: Record<string, string> = {
   pending: "bg-yellow-100 text-yellow-800",
-  confirmed: "bg-blue-100 text-blue-800",
+  quoted: "bg-blue-100 text-blue-800",
+  paid: "bg-emerald-100 text-emerald-800",
   matched: "bg-purple-100 text-purple-800",
   printing: "bg-orange-100 text-orange-800",
   completed: "bg-green-100 text-green-800",
@@ -8,7 +9,8 @@ const statusStyles: Record<string, string> = {
 
 const statusLabels: Record<string, string> = {
   pending: "รอดำเนินการ",
-  confirmed: "ยืนยันแล้ว",
+  quoted: "เสนอราคาแล้ว",
+  paid: "ชำระเงินแล้ว",
   matched: "จับคู่แล้ว",
   printing: "กำลังพิมพ์",
   completed: "เสร็จสิ้น",

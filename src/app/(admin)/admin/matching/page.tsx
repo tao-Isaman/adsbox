@@ -13,7 +13,7 @@ export default async function AdminMatchingPage() {
       packages:package_id (name, box_amount, price)
     `
     )
-    .eq("status", "confirmed")
+    .eq("status", "paid")
     .order("created_at", { ascending: true });
 
   const { data: matchGroups } = await supabase

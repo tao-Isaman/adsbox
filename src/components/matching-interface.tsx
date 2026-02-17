@@ -92,7 +92,7 @@ export function MatchingInterface({
       {/* ออเดอร์ที่ยังไม่ได้จับคู่ */}
       <section>
         <h2 className="text-lg font-semibold">
-          ออเดอร์ที่ยืนยันแล้ว (พร้อมจับคู่)
+          ออเดอร์ที่ชำระเงินแล้ว (พร้อมจับคู่)
         </h2>
         <p className="mt-1 text-sm text-zinc-500">
           เลือกออเดอร์ 4 รายการจากแพ็กเกจเดียวกันเพื่อสร้างกลุ่มจับคู่

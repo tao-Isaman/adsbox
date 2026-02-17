@@ -2,7 +2,8 @@ export type UserRole = "customer" | "admin";
 
 export type OrderStatus =
   | "pending"
-  | "confirmed"
+  | "quoted"
+  | "paid"
   | "matched"
   | "printing"
   | "completed";
@@ -36,6 +37,22 @@ export interface Order {
   package_id: string;
   status: OrderStatus;
   poster_url: string | null;
+  ad_details: string | null;
+  contact_person: string | null;
+  contact_tel: string | null;
+  company_name: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Quotation {
+  id: string;
+  quotation_number: string;
+  order_id: string;
+  amount: number;
+  notes: string | null;
+  valid_until: string | null;
+  created_by: string;
   created_at: string;
   updated_at: string;
 }

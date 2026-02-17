@@ -21,13 +21,13 @@ export async function createMatchGroup(name: string, orderIds: string[]) {
 
   const packageId = orders[0].package_id;
   const allSamePackage = orders.every((o) => o.package_id === packageId);
-  const allConfirmed = orders.every((o) => o.status === "confirmed");
+  const allPaid = orders.every((o) => o.status === "paid");
 
   if (!allSamePackage) {
     return { error: "ออเดอร์ทั้งหมดต้องเป็นแพ็กเกจเดียวกัน" };
   }
-  if (!allConfirmed) {
-    return { error: "ออเดอร์ทั้งหมดต้องมีสถานะยืนยันแล้ว" };
+  if (!allPaid) {
+    return { error: "ออเดอร์ทั้งหมดต้องมีสถานะชำระเงินแล้ว" };
   }
 
   const { data: group, error: groupError } = await supabase

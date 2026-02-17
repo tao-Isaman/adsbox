@@ -1,18 +1,7 @@
-"use client";
-
-import { createOrder } from "@/app/actions/orders";
+import Link from "next/link";
 import type { Package } from "@/lib/supabase/types";
-import { useTransition } from "react";
 
 export function PackageCard({ pkg }: { pkg: Package }) {
-  const [isPending, startTransition] = useTransition();
-
-  const handleBuy = () => {
-    startTransition(() => {
-      createOrder(pkg.id);
-    });
-  };
-
   const formattedPrice = new Intl.NumberFormat("th-TH", {
     style: "currency",
     currency: "THB",
@@ -51,13 +40,12 @@ export function PackageCard({ pkg }: { pkg: Package }) {
       </div>
       <div className="mt-6">
         <p className="text-2xl font-bold">{formattedPrice}</p>
-        <button
-          onClick={handleBuy}
-          disabled={isPending}
-          className="mt-4 w-full rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-orange-600 disabled:opacity-50"
+        <Link
+          href={`/orders/new?package=${pkg.id}`}
+          className="mt-4 block w-full rounded-lg bg-orange-500 px-4 py-2.5 text-center text-sm font-medium text-white transition hover:bg-orange-600"
         >
-          {isPending ? "กำลังดำเนินการ..." : "สั่งซื้อ"}
-        </button>
+          สั่งซื้อ
+        </Link>
       </div>
     </div>
   );
